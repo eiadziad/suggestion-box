@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة الإدارة</title>
+</head>
+<body>
+    <h1>لوحة الإدارة - الاقتراحات</h1>
+    <div id="suggestions"></div>
+
+    <script>
+        fetch('/get-suggestions')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('suggestions').innerText = data;
+            })
+            .catch(error => console.error('حدث خطأ:', error));
+    </script>
+</body>
+</html>
