@@ -4,13 +4,13 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000; // Heroku يحدد المنفذ تلقائيًا
 
 // Middleware لتحليل البيانات المرسلة عبر النموذج
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // خدمة الملفات الثابتة (مثل CSS, JS)
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // مسار الصفحة الرئيسية
 app.get('/', (req, res) => {
